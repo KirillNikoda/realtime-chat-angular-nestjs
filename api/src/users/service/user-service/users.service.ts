@@ -6,13 +6,11 @@ import {
 	Pagination,
 } from 'nestjs-typeorm-paginate';
 import { from, Observable } from 'rxjs';
-import { map, mapTo, switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/auth/service/auth.service';
 import { UserEntity } from 'src/users/model/user.entity';
 import { UserI } from 'src/users/model/user.interface';
 import { Repository } from 'typeorm';
-
-const bcrypt = require('bcrypt');
 
 @Injectable()
 export class UsersService {
