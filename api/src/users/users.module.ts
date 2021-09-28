@@ -10,5 +10,6 @@ import { UsersHelperService } from './service/users-helper/users-helper.service'
 	imports: [TypeOrmModule.forFeature([UserEntity]), AuthModule],
 	controllers: [UsersController],
 	providers: [UsersService, UsersHelperService],
+	exports: [UsersService],
 })
 export class UsersModule {}

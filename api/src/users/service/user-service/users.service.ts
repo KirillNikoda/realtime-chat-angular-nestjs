@@ -42,6 +42,10 @@ export class UsersService {
 		);
 	}
 
+	getOne(id: number): Promise<UserI> {
+		return this.usersRepository.findOneOrFail({ id });
+	}
+
 	login(user: UserI): Observable<string> {
 		return this.findByEmail(user.email).pipe(
 			switchMap((foundUser: UserI) => {
