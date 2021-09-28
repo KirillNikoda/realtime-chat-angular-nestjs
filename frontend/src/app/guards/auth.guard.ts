@@ -6,13 +6,14 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private jwtService: JwtHelperService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,8 +23,11 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // TODO: implement real Guard when Login component is finished
-    this.router.navigate(['']);
-    return false;
+    if (this.jwtService.isTokenExpired()) {
+      this.router.navigateByUrl('');
+      return false;
+    }
+
+    return true;
   }
 }
