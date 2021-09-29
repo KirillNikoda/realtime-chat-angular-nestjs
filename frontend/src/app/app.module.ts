@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -23,7 +24,7 @@ export function tokenGetter() {
     MatSnackBarModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         allowedDomains: ['localhost:3000'],
       },
     }),
