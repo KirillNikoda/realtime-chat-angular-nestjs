@@ -11,6 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthMiddleware } from './auth/middleware/auth.middleware';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
 	imports: [
@@ -23,6 +24,7 @@ import { AuthMiddleware } from './auth/middleware/auth.middleware';
 		}),
 		UsersModule,
 		AuthModule,
+		ChatModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
